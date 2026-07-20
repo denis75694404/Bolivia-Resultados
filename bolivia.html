@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Dashboard VIDA – Estudio de Línea de Base</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,600;9..144,700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 :root{--b:#378ADD;--bl:#E6F1FB;--bd:#0C447C;--t:#1D9E75;--tl:#E1F5EE;--td:#085041;--c:#D85A30;--cl:#FAECE7;--cd:#712B13;--a:#BA7517;--al:#FAEEDA;--ad:#633806;--p:#534AB7;--pl:#EEEDFE;--pd:#3C3489;--g:#888780;--gl:#F1EFE8;--gd:#444441;--r:#E24B4A;--rl:#FCEBEB;--rd:#791F1F;--n:#1a1a18;--n2:#5f5e5a;--n3:#888780;--bg:#f8f8f6;--card:#fff;--brd:rgba(0,0,0,0.1);--rad:10px}
 @media(prefers-color-scheme:dark){:root{--n:#f1efe8;--n2:#b4b2a9;--n3:#888780;--bg:#1a1a18;--card:#242420;--brd:rgba(255,255,255,0.08);--bl:#042C53;--tl:#04342C;--cl:#4A1B0C;--al:#412402;--pl:#26215C;--rl:#501313}}
@@ -173,6 +175,52 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
 .pt-embed-wrap{width:100%;height:520px;border-radius:8px;overflow:hidden;border:0.5px solid var(--brd);background:var(--bg)}
 .pt-embed-iframe{width:100%;height:100%;border:none}
 @media(max-width:700px){.pt-embed-wrap{height:400px}}
+
+/* ===== Panel Clima (embebido, escopado bajo .clima-embed) ===== */
+.clima-embed{
+  --cl-bg:#142420; --cl-bg-deep:#0E1B18; --cl-card:#1C302B; --cl-card-line:#2C463D;
+  --cl-text:#F1EDE0; --cl-muted:#93AC9F; --cl-gold:#E3A83B; --cl-river:#56ADA6; --cl-clay:#C1683F; --cl-gap:#5C6E67;
+  background:radial-gradient(ellipse at top left, #1A2E28 0%, var(--cl-bg) 45%), var(--cl-bg);
+  color:var(--cl-text);
+  font-family:'Inter',sans-serif;
+  line-height:1.5;
+  border-radius:10px;
+  overflow:hidden;
+}
+.clima-embed .cl-wrap{max-width:1180px;margin:0 auto;padding:0 24px 36px}
+.clima-embed header{padding:36px 24px 28px;position:relative;overflow:hidden;border-bottom:1px solid var(--cl-card-line)}
+.clima-embed header .cl-wrap{padding:0}
+.clima-embed .eyebrow{font-family:'JetBrains Mono',monospace;letter-spacing:.14em;text-transform:uppercase;font-size:11px;color:var(--cl-gold);margin:0 0 16px}
+.clima-embed h1{font-family:'Fraunces',serif;font-weight:600;font-size:clamp(24px,4vw,38px);line-height:1.08;margin:0 0 12px;max-width:820px;letter-spacing:-.01em}
+.clima-embed h1 em{font-style:italic;font-weight:400;color:var(--cl-river)}
+.clima-embed .lede{max-width:640px;color:var(--cl-muted);font-size:14px;margin:0 0 6px}
+.clima-embed .legend-row{display:flex;gap:22px;margin-top:20px;flex-wrap:wrap}
+.clima-embed .legend-item{display:flex;align-items:center;gap:8px;font-family:'JetBrains Mono',monospace;font-size:12.5px;color:var(--cl-text)}
+.clima-embed .dot{width:10px;height:10px;border-radius:50%;flex:none}
+.clima-embed .notice{margin-top:24px;background:rgba(92,110,103,0.14);border:1px solid var(--cl-card-line);border-left:3px solid var(--cl-gap);padding:12px 16px;border-radius:4px;font-size:13px;color:var(--cl-muted);max-width:820px}
+.clima-embed .notice b{color:var(--cl-text);font-weight:600}
+.clima-embed section.kpis{padding:32px 0 10px}
+.clima-embed .section-head{margin-bottom:18px}
+.clima-embed .section-head .tag{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--cl-gold);letter-spacing:.1em;text-transform:uppercase}
+.clima-embed .section-head h2{font-family:'Fraunces',serif;font-weight:600;font-size:21px;margin:8px 0 0}
+.clima-embed .kpi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.clima-embed .kpi-card{background:var(--cl-card);border:1px solid var(--cl-card-line);border-radius:10px;padding:18px 18px 16px;position:relative;overflow:hidden}
+.clima-embed .kpi-card::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px}
+.clima-embed .kpi-card.trinidad::before{background:var(--cl-clay)}
+.clima-embed .kpi-card.riberalta::before{background:var(--cl-river)}
+.clima-embed .kpi-card.guayaramerin::before{background:var(--cl-gold)}
+.clima-embed .kpi-card h3{font-family:'Fraunces',serif;font-size:16px;margin:0 0 10px;font-weight:600}
+.clima-embed .kpi-metric{display:flex;justify-content:space-between;align-items:baseline;padding:6px 0;border-top:1px solid var(--cl-card-line);font-size:12.5px;color:var(--cl-muted)}
+.clima-embed .kpi-metric:first-of-type{border-top:none}
+.clima-embed .kpi-metric span.val{font-family:'JetBrains Mono',monospace;color:var(--cl-text);font-size:13px}
+.clima-embed section.charts{padding:36px 0 0}
+.clima-embed .chart-card{background:var(--cl-card);border:1px solid var(--cl-card-line);border-radius:10px;padding:20px 20px 10px;margin-bottom:18px}
+.clima-embed .chart-card .chart-top{display:flex;justify-content:space-between;align-items:flex-start;flex-wrap:wrap;gap:10px;margin-bottom:6px}
+.clima-embed .chart-card h3{font-family:'Fraunces',serif;font-weight:600;font-size:16px;margin:0}
+.clima-embed .chart-card p.note{color:var(--cl-muted);font-size:11.5px;max-width:440px;margin:0;text-align:right}
+.clima-embed .chart-holder{height:260px;position:relative}
+.clima-embed footer{margin-top:32px;padding:20px 24px 0;border-top:1px solid var(--cl-card-line);color:var(--cl-muted);font-size:11.5px;font-family:'JetBrains Mono',monospace;display:flex;justify-content:space-between;flex-wrap:wrap;gap:10px}
+@media(max-width:820px){.clima-embed .kpi-grid{grid-template-columns:1fr}}
 </style>
 </head>
 <body>
@@ -293,16 +341,38 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
   <!-- ===== DATOS CLIMATOLÓGICOS ===== -->
   <div class="pt-panel" id="pt-clima">
     <button class="pt-back" onclick="ptHome()">← Volver al índice</button>
-    <div class="card">
-      <div class="ct">🌡️ Datos climatológicos 2016–2026</div>
-      <div class="cs">Comparación de temperatura, precipitación, humedad relativa, viento y evapotranspiración de referencia (ETo) entre Trinidad, Riberalta y Guayaramerín obetnidos de la Información nacional de datos hidrometeorológicos del Servicio Nacional de Meteorología e Hidrología </div>
-      <div style="display:flex;gap:10px;margin:10px 0;flex-wrap:wrap">
-        <a class="pt-extbtn" href="Clima.html" target="_blank" rel="noopener">🌡️ Abrir directamente</a>
+    <div class="clima-embed">
+      <header>
+        <div class="cl-wrap">
+          <p class="eyebrow">Estaciones meteorológicas · Beni, Bolivia</p>
+          <h1>Datos climatológicos <em>2016 a 2026</em></h1>
+          <p class="lede">Comparación de temperatura, precipitación, humedad relativa, viento y evapotranspiración de referencia (ETo) entre Trinidad, Riberalta y Guayaramerín, 2016 – 2026.</p>
+          <div class="legend-row">
+            <div class="legend-item"><span class="dot" style="background:var(--cl-clay)"></span>Trinidad</div>
+            <div class="legend-item"><span class="dot" style="background:var(--cl-river)"></span>Riberalta</div>
+            <div class="legend-item"><span class="dot" style="background:var(--cl-gold)"></span>Guayaramerín</div>
+          </div>
+          <div class="notice"><b>Cobertura de datos desigual:</b> Trinidad solo tiene registro hasta 2024 (año con apenas 76 días medidos). Riberalta y Guayaramerín llegan hasta 2026, aún incompleto. La precipitación diaria casi no se registró en Trinidad y Riberalta antes de 2023, y la ETo deja de registrarse en los tres municipios a partir de 2024. Los huecos en las gráficas representan años sin datos, no valores en cero.</div>
+        </div>
+      </header>
+      <div class="cl-wrap">
+        <section class="kpis">
+          <div class="section-head"><p class="tag">Promedios del periodo 2016–2026</p><h2>Un vistazo por municipio</h2></div>
+          <div class="kpi-grid" id="cl-kpiGrid"></div>
+        </section>
+        <section class="charts">
+          <div class="section-head"><p class="tag">Series anuales</p><h2>Evolución comparada por variable</h2></div>
+          <div class="chart-card"><div class="chart-top"><h3>Temperatura media anual (°C)</h3><p class="note">Diferencias menores a 0.2 °C en el promedio del periodo entre los tres municipios.</p></div><div class="chart-holder"><canvas id="cl-chartTemp"></canvas></div></div>
+          <div class="chart-card"><div class="chart-top"><h3>Precipitación total anual (mm)</h3><p class="note">Solo Guayaramerín tiene serie completa; tendencia creciente hacia 2024-2025.</p></div><div class="chart-holder"><canvas id="cl-chartPrecip"></canvas></div></div>
+          <div class="chart-card"><div class="chart-top"><h3>Humedad relativa media anual (%)</h3><p class="note">Guayaramerín es consistentemente el más húmedo desde que hay registro (2023+).</p></div><div class="chart-holder"><canvas id="cl-chartHum"></canvas></div></div>
+          <div class="chart-card"><div class="chart-top"><h3>Velocidad de viento media anual (m/s)</h3><p class="note">Trinidad muestra los vientos medios más intensos del conjunto.</p></div><div class="chart-holder"><canvas id="cl-chartWind"></canvas></div></div>
+          <div class="chart-card"><div class="chart-top"><h3>ETo media anual (mm/día)</h3><p class="note">Sin datos comparables desde 2024; Guayaramerín lidera la demanda evapotranspirativa.</p></div><div class="chart-holder"><canvas id="cl-chartEto"></canvas></div></div>
+        </section>
+        <footer>
+          <span>Fuente: estaciones meteorológicas de Trinidad, Riberalta y Guayaramerín · datos diarios agregados a nivel anual.</span>
+          <span>Datos integrados en el dashboard</span>
+        </footer>
       </div>
-      <div class="pt-embed-wrap">
-        <iframe class="pt-embed-iframe" src="Clima.html" loading="lazy">Cargando…</iframe>
-      </div>
-      <div class="ins" style="margin-top:10px"><p>El panel embebido muestra el archivo Clima.html tal cual fue provisto (debe guardarse en la misma carpeta que este dashboard para que el enlace funcione). Usa el botón de arriba para abrirlo en una pestaña aparte.</p></div>
     </div>
   </div>
 
@@ -2393,12 +2463,82 @@ const GLIKERT = {
 };
 
 // ===== NAVEGACIÓN PORTADA / ÍNDICE =====
+// ===== Panel Clima: gráficas embebidas (renderizado perezoso al abrir el panel) =====
+let _climaChartsInit = false;
+function initClimaCharts(){
+  if(_climaChartsInit) return;
+  if(typeof Chart === 'undefined') return;
+  _climaChartsInit = true;
+  const CL_DATA = {"temperatura_media_c": {"Trinidad": [26.963260273972605, 26.839834710743805, 26.46928767123288, 26.961123919308356, 27.46032876712329, 26.672342857142855, 25.72272463768116, 26.466603174603172, 29.470789473684214, null, null], "Riberalta": [27.463095890410962, 27.44696132596685, 26.795205479452054, 27.323764367816093, 27.612039660056656, 27.241818181818186, 26.313942028985505, 26.715732484076433, 27.207092651757186, 26.137662337662338, null], "Guayaramerín": [27.26060606060606, 27.384065934065934, 26.77747252747253, 27.27430939226519, 27.692608695652176, 26.880113636363635, 27.067877094972065, 27.81888888888889, 28.139242424242422, 26.33654205607477, 26.08148148148148]}, "precipitacion_total_mm": {"Trinidad": [null, 0.0, null, null, null, null, null, null, null, null, null], "Riberalta": [null, 0.0, null, null, null, null, null, 56.97, 888.9, 986.9, 8.600000000000001], "Guayaramerín": [647.7, 944.4, 1211.9, 984.8, 420.4, 1081.8, 895.8, 2134.6, 3196.9, 3618.0, 1739.5]}, "humedad_relativa_pct": {"Trinidad": [70.62747945205479, 75.49440771349863, 74.30043835616438, 73.06812680115273, 71.82950684931507, 73.45819484240688, 76.91655072463767, 80.1800634920635, 77.20815789473684, null, null], "Riberalta": [74.90068493150685, 76.2889226519337, 77.60991780821918, 76.53077586206896, 75.44711048158639, 75.32198863636364, 81.8839420289855, 83.31003184713376, 74.40402555910543, 86.38792207792207, null], "Guayaramerín": [null, null, null, null, null, null, null, 83.41892376681614, 83.35910714285714, 83.84505415162455, 89.30569948186529]}, "viento_media_ms": {"Trinidad": [5.412356164383562, 5.116225895316805, 4.471041095890411, 4.169279538904899, 5.1121917808219175, 5.2428653295128935, 4.949565217391304, null, null, null, null], "Riberalta": [5.480054794520548, 4.7440495867768595, 3.396602739726027, 3.0804871060171917, 4.349773371104816, 5.2329378531073445, 5.5738728323699425, 5.134649681528662, 3.9270063694267514, 3.13, null], "Guayaramerín": [null, null, null, null, null, null, null, 3.7902666666666662, 3.4977083333333336, 3.9188644688644687, 3.941088082901554]}, "eto_mm_dia": {"Trinidad": [4.589561643835617, 4.385745856353592, 4.277342465753425, 4.490809248554913, 4.531246537396122, 4.328097982708933, 4.287757009345794, 4.79179104477612, null, null, null], "Riberalta": [4.683186813186813, 4.612707182320442, 4.50213698630137, 4.609193083573487, 4.375520231213873, 4.515071633237822, 4.428983739837398, 4.6659999999999995, null, null, null], "Guayaramerín": [5.0575, 5.198516483516483, 4.947472527472527, 5.174364640883978, 5.495652173913044, 5.287670454545455, 5.129719101123595, 5.013790322580645, null, null, null]}, "años": [2016, 2017, 2018, 2019, 2020, 2021, 2022, 2023, 2024, 2025, 2026]};
+  const CL_COLORS = { Trinidad: "#C1683F", Riberalta: "#56ADA6", "Guayaramerín": "#E3A83B" };
+  const CL_MUNIS = ["Trinidad","Riberalta","Guayaramerín"];
+  function clAvg(arr){ const v = arr.filter(x=>x!==null && x!==undefined && !Number.isNaN(x)); if(!v.length) return null; return v.reduce((a,b)=>a+b,0)/v.length; }
+  function clFmt(n, dec, unit){ if(n===null || n===undefined) return "s/d"; return n.toFixed(dec) + (unit||""); }
+
+  const kpiGrid = g('cl-kpiGrid');
+  const KPI_DEFS = [
+    {key:"temperatura_media_c", label:"Temperatura media", dec:1, unit:" °C"},
+    {key:"precipitacion_total_mm", label:"Precipitación (prom. anual)", dec:0, unit:" mm"},
+    {key:"humedad_relativa_pct", label:"Humedad relativa", dec:1, unit:" %"},
+    {key:"viento_media_ms", label:"Viento medio", dec:2, unit:" m/s"},
+    {key:"eto_mm_dia", label:"ETo media", dec:2, unit:" mm/día"},
+  ];
+  if(kpiGrid){
+    CL_MUNIS.forEach(m=>{
+      const card = document.createElement('div');
+      card.className = 'kpi-card ' + m.toLowerCase().replace('í','i');
+      let html = `<h3>${m}</h3>`;
+      KPI_DEFS.forEach(k=>{
+        const value = clAvg(CL_DATA[k.key][m]);
+        html += `<div class="kpi-metric"><span>${k.label}</span><span class="val">${clFmt(value,k.dec,k.unit)}</span></div>`;
+      });
+      card.innerHTML = html;
+      kpiGrid.appendChild(card);
+    });
+  }
+
+  function clBuildLine(canvasId, varKey, yLabel, decimals){
+    const ctx = g(canvasId); if(!ctx) return;
+    const datasets = CL_MUNIS.map(m=>({
+      label: m, data: CL_DATA[varKey][m], borderColor: CL_COLORS[m], backgroundColor: CL_COLORS[m],
+      spanGaps: false, tension: 0.35, pointRadius: 3.5, pointHoverRadius: 5, borderWidth: 2.5,
+    }));
+    new Chart(ctx, {
+      type: 'line',
+      data: { labels: CL_DATA["años"], datasets },
+      options: {
+        responsive: true, maintainAspectRatio: false,
+        interaction: { mode:'index', intersect:false },
+        plugins: {
+          legend: { display:false },
+          tooltip: {
+            backgroundColor:'#0E1B18', borderColor:'#2C463D', borderWidth:1,
+            titleFont:{family:"'JetBrains Mono', monospace", size:12},
+            bodyFont:{family:"'JetBrains Mono', monospace", size:12},
+            callbacks:{ label: (c)=> c.dataset.label + ': ' + (c.raw===null? 's/d' : c.raw.toFixed(decimals)) }
+          }
+        },
+        scales: {
+          x: { grid:{ color:'#22362F' }, ticks:{ color:'#93AC9F', font:{family:"'JetBrains Mono', monospace", size:11} } },
+          y: { grid:{ color:'#22362F' }, ticks:{ color:'#93AC9F' }, title:{ display:true, text:yLabel, color:'#93AC9F', font:{size:11} } }
+        }
+      }
+    });
+  }
+  clBuildLine('cl-chartTemp','temperatura_media_c','°C',1);
+  clBuildLine('cl-chartPrecip','precipitacion_total_mm','mm',0);
+  clBuildLine('cl-chartHum','humedad_relativa_pct','%',1);
+  clBuildLine('cl-chartWind','viento_media_ms','m/s',2);
+  clBuildLine('cl-chartEto','eto_mm_dia','mm/día',2);
+}
+
 function ptShow(id){
   document.querySelectorAll('.pt-panel').forEach(p=>p.classList.remove('on'));
   document.getElementById('pt-index').style.display = 'none';
   document.querySelector('.pt-hero').style.display = 'none';
   const panel = document.getElementById('pt-'+id);
   if(panel) panel.classList.add('on');
+  if(id==='clima') initClimaCharts();
   window.scrollTo({top:0, behavior:'smooth'});
 }
 function ptHome(){
