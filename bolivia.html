@@ -198,6 +198,7 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
       <div class="pt-card" onclick="ptShow('objetivos')"><div class="pt-ic">🎯</div><div class="pt-tt">Objetivos</div><div class="pt-ds">General y específicos del estudio</div></div>
       <div class="pt-card" onclick="ptShow('principios')"><div class="pt-ic">🤝</div><div class="pt-tt">Principios y valores</div><div class="pt-ds">Marco ético que guía el estudio</div></div>
       <div class="pt-card" onclick="ptShow('georref')"><div class="pt-ic">🗺️</div><div class="pt-tt">Georreferenciación</div><div class="pt-ds">Mapa de la zona de estudio</div></div>
+      <div class="pt-card" onclick="ptShow('clima')"><div class="pt-ic">🌡️</div><div class="pt-tt">Datos climatológicos</div><div class="pt-ds">Temperatura, precipitación, humedad, viento y ETo 2016–2026</div></div>
       <div class="pt-card" onclick="ptShow('encuesta')"><div class="pt-ic">📝</div><div class="pt-tt">Encuesta</div><div class="pt-ds">Instrumento aplicado en campo</div></div>
       <div class="pt-card" onclick="ptShow('basedatos')"><div class="pt-ic">🗄️</div><div class="pt-tt">Base de datos</div><div class="pt-ds">Datos crudos recolectados</div></div>
       <div class="pt-card pt-card-featured" onclick="ptGoResultados()"><div class="pt-ic">📊</div><div class="pt-tt">Resultados</div><div class="pt-ds">Dashboard interactivo · 10 secciones</div></div>
@@ -286,6 +287,22 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
         <a class="pt-extbtn" href="https://earth.google.com/web/@-12.47406299,-63.02148306,-332.12407345a,3755280.59109271d,35y,0h,0t,0r/data=CgRCAggBMikKJwolCiExdTJLd2dyRDRTTHFKVXZlbWhGTzVSSmZuZE1hNHNWckYgAToDCgEwQgIIAEoHCOfZ2AIQAQ?authuser=0" target="_blank" rel="noopener">🌐 Abrir en Google Earth (vista 3D)</a>
       </div>
       <div class="ins" style="margin-top:10px"><p>El mapa embebido usa Google Maps por compatibilidad; para la experiencia 3D completa de Google Earth, usa el botón de arriba (se abre en una pestaña nueva).</p></div>
+    </div>
+  </div>
+
+  <!-- ===== DATOS CLIMATOLÓGICOS ===== -->
+  <div class="pt-panel" id="pt-clima">
+    <button class="pt-back" onclick="ptHome()">← Volver al índice</button>
+    <div class="card">
+      <div class="ct">🌡️ Datos climatológicos 2016–2026</div>
+      <div class="cs">Comparación de temperatura, precipitación, humedad relativa, viento y evapotranspiración de referencia (ETo) entre Trinidad, Riberalta y Guayaramerín</div>
+      <div style="display:flex;gap:10px;margin:10px 0;flex-wrap:wrap">
+        <a class="pt-extbtn" href="Clima.html" target="_blank" rel="noopener">🌡️ Abrir directamente</a>
+      </div>
+      <div class="pt-embed-wrap">
+        <iframe class="pt-embed-iframe" src="Clima.html" loading="lazy">Cargando…</iframe>
+      </div>
+      <div class="ins" style="margin-top:10px"><p>El panel embebido muestra el archivo Clima.html tal cual fue provisto (debe guardarse en la misma carpeta que este dashboard para que el enlace funcione). Usa el botón de arriba para abrirlo en una pestaña aparte.</p></div>
     </div>
   </div>
 
@@ -453,8 +470,10 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
       <div class="cw" style="height:180px"><canvas id="c-muestra" role="img"></canvas></div>
     </div>
     <div class="card">
-      <div class="ct">Tasas de incidencia — Malaria y dengue por municipio</div><div class="cs">Línea base Bolivia</div>
-      <div class="ins-a ins"><p>Pendiente: estos datos deben obtenerse del Sistema Nacional de Información en Salud (SNIS) de Bolivia para Trinidad, Riberalta y Guayaramerín. Los datos epidemiológicos de Perú (SE de Enfermedades Metaxénicas MINSA) se han retirado por no corresponder a Bolivia.</p></div>
+      <div class="ct">Tasas de incidencia 2024 (por 100 hab.)</div><div class="cs">Malaria y dengue por municipio — Línea base</div>
+      <div class="leg"><span class="li"><span class="ld" style="background:#D85A30"></span>Malaria</span><span class="li"><span class="ld" style="background:#378ADD"></span>Dengue</span></div>
+      <div class="cw" style="height:220px"><canvas id="c-incidencia" role="img"></canvas></div>
+      <div style="font-size:10px;color:var(--n3);margin-top:6px">Fuente: Minsad (2026), Vigilancia Epidemiológica de enfermedades vectoriales, SNIS Bolivia (<a href="https://snis.minsalud.gob.bo/21-areas-funcionales/vigilancia-epidemiologica" target="_blank" rel="noopener" style="color:var(--b)">snis.minsalud.gob.bo</a>); población: INE, Censos Nacionales 2012 y 2024.</div>
     </div>
   </div>
 
@@ -751,11 +770,34 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
 <!-- ===== 4. SALUD Y ENFERMEDADES TRANSMITIDAS POR VECTORES ===== -->
 <!-- ============================================================ -->
 <div id="s-salud" class="sec">
-  <div class="ins-a ins"><p><strong>Pendiente:</strong> los casos e incidencia de malaria y dengue por municipio (Trinidad, Riberalta, Guayaramerín) deben incorporarse desde el Sistema Nacional de Información en Salud (SNIS) de Bolivia. Los KPI de casos que aquí aparecían correspondían a municipios de Perú y se han retirado.</p></div>
+  <div class="g2">
+    <div class="card">
+      <div class="ct">Tasa de incidencia de malaria 2024, 2025 y 2026 (%)</div>
+      <div class="cs">Por 100 habitantes</div>
+      <div class="leg"><span class="li"><span class="ld" style="background:#888780"></span>2024</span><span class="li"><span class="ld" style="background:#378ADD"></span>2025</span><span class="li"><span class="ld" style="background:#D85A30"></span>2026</span></div>
+      <div class="cw" style="height:220px"><canvas id="c-inc-malaria" role="img"></canvas></div>
+    </div>
+    <div class="card">
+      <div class="ct">Tasa de incidencia de dengue 2024, 2025 y 2026 (%)</div>
+      <div class="cs">Por 100 habitantes</div>
+      <div class="leg"><span class="li"><span class="ld" style="background:#888780"></span>2024</span><span class="li"><span class="ld" style="background:#1D9E75"></span>2025</span><span class="li"><span class="ld" style="background:#3DDC97"></span>2026</span></div>
+      <div class="cw" style="height:220px"><canvas id="c-inc-dengue" role="img"></canvas></div>
+    </div>
+  </div>
 
   <div class="card">
     <div class="ct">Resumen epidemiológico por municipio</div>
-    <div class="ins-a ins"><p><strong>Pendiente de integración.</strong> Las tasas de incidencia y la tabla epidemiológica que aquí aparecían (población, casos y tasas de malaria/dengue 2024-2026) correspondían a municipios de Loreto, Perú, y se han retirado por no corresponder a Bolivia. Estos datos deben obtenerse del Sistema Nacional de Información en Salud (SNIS) de Bolivia para Trinidad, Riberalta y Guayaramerín.</p></div>
+    <div style="overflow-x:auto">
+    <table class="tbl">
+      <thead><tr><th>Municipio</th><th>Grupo</th><th>Población 2024</th><th>Malaria casos 2024</th><th>Malaria tasa 2024 (%)</th><th>Malaria casos 2025</th><th>Malaria tasa 2025 (%)</th><th>Malaria casos 2026*</th><th>Malaria tasa 2026 (%)</th><th>Dengue casos 2024</th><th>Dengue tasa 2024 (%)</th><th>Dengue casos 2025</th><th>Dengue tasa 2025 (%)</th><th>Dengue casos 2026*</th><th>Dengue tasa 2026 (%)</th></tr></thead>
+      <tbody>
+        <tr><td>Trinidad</td><td><span class="pill pb">Control</span></td><td>124,357</td><td>4</td><td>0.00</td><td>3</td><td>0.00</td><td>1</td><td>0.00</td><td>750</td><td>0.60</td><td>547</td><td>0.44</td><td>360</td><td>0.28</td></tr>
+        <tr><td>Riberalta</td><td><span class="pill pt">Intervención</span></td><td>107,141</td><td>6,469</td><td>6.04</td><td>4,925</td><td>4.53</td><td>2,228</td><td>2.02</td><td>993</td><td>0.93</td><td>1,176</td><td>1.08</td><td>492</td><td>0.45</td></tr>
+        <tr><td>Guayaramerín</td><td><span class="pill pt">Intervención</span></td><td>40,759</td><td>23,139</td><td>56.77</td><td>19,174</td><td>47.14</td><td>8,322</td><td>20.50</td><td>824</td><td>2.02</td><td>1,049</td><td>2.58</td><td>172</td><td>0.42</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <div style="font-size:10px;color:var(--n3);margin-top:6px">*2026: datos hasta la semana epidemiológica 18 (2024 y 2025: hasta semana 52). Fuente: Minsad (2026), Vigilancia Epidemiológica de enfermedades vectoriales, SNIS Bolivia (<a href="https://snis.minsalud.gob.bo/21-areas-funcionales/vigilancia-epidemiologica" target="_blank" rel="noopener" style="color:var(--b)">snis.minsalud.gob.bo</a>); población: INE, Censos Nacionales 2012 y 2024.</div>
   </div>
 
   <div class="g2">
@@ -1511,6 +1553,7 @@ function initCharts(name){
   
   if(name==='resumen'){
     mc('c-muestra','bar',D,[{data:[95,101,220], backgroundColor:'#378ADD'}, {data:[0,101,21], backgroundColor:'#534AB7'}, {data:[53,78,141], backgroundColor:'#BA7517'}], {...so, plugins:{legend:{display:false}}});
+    mc('c-incidencia','bar',D,[{label:'Malaria', data:[0.00,6.04,56.77], backgroundColor:'#D85A30'}, {label:'Dengue', data:[0.60,0.93,2.02], backgroundColor:'#378ADD'}], {plugins:{legend:{display:false}}});
   }
   if(name==='contexto'){
     const D_BO = ['Trinidad','Riberalta','Guayaramerín'];
@@ -1534,6 +1577,8 @@ function initCharts(name){
     initPatrimonio();
   }
   if(name==='salud'){
+    mc('c-inc-malaria','bar',D,[{label:'2024', data:[0.00,6.04,56.77], backgroundColor:'#888780'}, {label:'2025', data:[0.00,4.53,47.14], backgroundColor:'#378ADD'}, {label:'2026', data:[0.00,2.02,20.50], backgroundColor:'#D85A30'}], {plugins:{legend:{display:false}}});
+    mc('c-inc-dengue','bar',D,[{label:'2024', data:[0.60,0.93,2.02], backgroundColor:'#888780'}, {label:'2025', data:[0.44,1.08,2.58], backgroundColor:'#1D9E75'}, {label:'2026', data:[0.28,0.45,0.42], backgroundColor:'#3DDC97'}], {plugins:{legend:{display:false}}});
     mc('c-diag','bar',['Malaria','Dengue','Ninguno'],[{label:'Trinidad', data:[2.4,2.4,95.2], backgroundColor:'#378ADD'},{label:'Trinidad', data:[2.4,29.3,65.9], backgroundColor:'#534AB7'},{label:'Riberalta', data:[0,0,100], backgroundColor:'#1D9E75'},{label:'Guaya.', data:[20,20,60], backgroundColor:'#D85A30'}], {});
     mc('c-conducta','bar',D,[{label:'Va inmediato al establecimiento', data:Z(CH['c-conducta'][0]), backgroundColor:'#1D9E75'}, {label:'Va a farmacia', data:Z(CH['c-conducta'][1]), backgroundColor:'#BA7517'}, {label:'Trata en casa', data:Z(CH['c-conducta'][2]), backgroundColor:'#D85A30'}], {...so, scales:{...so.scales,y:{...so.scales.y,max:110}}});
     mc('c-fumig','bar',D,[{label:'<3 meses', data:Z(CH['c-fumig'][0]), backgroundColor:'#1D9E75'}, {label:'3-5 meses', data:Z(CH['c-fumig'][1]), backgroundColor:'#378ADD'}, {label:'6-11 meses', data:Z(CH['c-fumig'][2]), backgroundColor:'#BA7517'}, {label:'≥1 año/nunca', data:Z(CH['c-fumig'][3]), backgroundColor:'#D85A30'}], {...so, scales:{...so.scales,y:{...so.scales.y,max:110}}});
