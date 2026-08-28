@@ -861,8 +861,8 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
       <thead><tr><th>Municipio</th><th>Grupo</th><th>Población 2024</th><th>Malaria casos 2024</th><th>Malaria tasa 2024 (%)</th><th>Malaria casos 2025</th><th>Malaria tasa 2025 (%)</th><th>Malaria casos 2026*</th><th>Malaria tasa 2026 (%)</th><th>Dengue casos 2024</th><th>Dengue tasa 2024 (%)</th><th>Dengue casos 2025</th><th>Dengue tasa 2025 (%)</th><th>Dengue casos 2026*</th><th>Dengue tasa 2026 (%)</th></tr></thead>
       <tbody>
         <tr><td>Trinidad</td><td><span class="pill pb">Control</span></td><td>124,357</td><td>4</td><td>0.00</td><td>3</td><td>0.00</td><td>1</td><td>0.00</td><td>750</td><td>0.60</td><td>547</td><td>0.44</td><td>360</td><td>0.28</td></tr>
-        <tr><td>Riberalta</td><td><span class="pill pt">Intervención</span></td><td>107,141</td><td>6,469</td><td>6.04</td><td>4,925</td><td>4.53</td><td>2,228</td><td>2.02</td><td>993</td><td>0.93</td><td>1,176</td><td>1.08</td><td>492</td><td>0.45</td></tr>
-        <tr><td>Guayaramerín</td><td><span class="pill pt">Intervención</span></td><td>40,759</td><td>23,139</td><td>56.77</td><td>19,174</td><td>47.14</td><td>8,322</td><td>20.50</td><td>824</td><td>2.02</td><td>1,049</td><td>2.58</td><td>172</td><td>0.42</td></tr>
+        <tr><td>Riberalta</td><td><span class="pill pt">Intervención</span></td><td>107,141</td><td>6,736</td><td>6.29</td><td>3,802</td><td>3.49</td><td>2,127</td><td>1.92</td><td>198</td><td>0.18</td><td>147</td><td>0.14</td><td>181</td><td>0.16</td></tr>
+        <tr><td>Guayaramerín</td><td><span class="pill pt">Intervención</span></td><td>40,759</td><td>1,493</td><td>3.66</td><td>2,334</td><td>5.74</td><td>520</td><td>1.28</td><td>242</td><td>0.59</td><td>266</td><td>0.65</td><td>193</td><td>0.48</td></tr>
       </tbody>
     </table>
     </div>
@@ -1145,31 +1145,6 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
     </div>
   </div>
 
-  <div class="card">
-    <div class="ct">Recursos humanos en salud – hallazgos cualitativos</div>
-    <div class="g2" style="margin-bottom:0">
-      <div>
-        <div class="cs">Personal de salud – Control (Trinidad)</div>
-        <ul style="font-size:11px;color:var(--n2);line-height:1.8;padding-left:18px">
-          <li><strong>Fortaleza:</strong> Capacidad operativa territorial y articulación comunitaria</li>
-          <li><strong>Brecha:</strong> Distribución de personal insuficiente (solo 18 realizan visitas domiciliarias)</li>
-          <li><strong>Brecha:</strong> Capacitación insuficiente en cambio climático</li>
-          <li><strong>Barrera:</strong> Financiamiento limitado y rotación de personal</li>
-        </ul>
-      </div>
-      <div>
-        <div class="cs">Personal de salud – Intervención (Riberalta, Guaya.)</div>
-        <ul style="font-size:11px;color:var(--n2);line-height:1.8;padding-left:18px">
-          <li><strong>Fortaleza:</strong> Buena disponibilidad de insumos en Riberalta</li>
-          <li><strong>Brecha:</strong> Insuficiencia de personal en todos los niveles</li>
-          <li><strong>Brecha:</strong> Resistencia de la población a permitir ingreso del personal</li>
-          <li><strong>Barrera:</strong> Condiciones territoriales dificultan el acceso</li>
-        </ul>
-      </div>
-    </div>
-    <div class="ins"><p>Pendiente: incorporar citas cualitativas del personal de salud de Bolivia (Riberalta, Guayaramerín, Trinidad).</p></div>
-  </div>
-
   <!-- Agua y saneamiento (vinculado a servicios de salud) -->
   <div class="sdiv">Agua y saneamiento – determinantes de salud</div>
 
@@ -1264,13 +1239,6 @@ body{font-family:system-ui,-apple-system,sans-serif;background:var(--bg);color:v
       </div>
       <div class="ins-r ins"><p>La participación en grupos de defensa comunitaria es extremadamente baja en todos los municipios, con Guaya. mostrando la menor participación (~1%).</p></div>
     </div>
-  </div>
-
-  <div class="card">
-    <div class="ct">Políticas y planes de adaptación – percepción desde GOREL</div>
-    <div class="quote">"Factores como la pobreza y la falta de acceso a agua segura limitan la efectividad de las intervenciones. Se requiere un enfoque intersectorial que aborde los determinantes sociales de la salud."<div class="qauth">Carlos Álvarez Antonio, GOREL</div></div>
-    <div class="quote">"Es fundamental fortalecer la articulación entre autoridades, sector salud y sociedad civil… el trabajo en equipo, la mancomunidad y la generación de sinergias son competencias clave."<div class="qauth">Kennedy Tarazona, Trinidad</div></div>
-    <div style="font-size:11px;color:var(--n2);line-height:1.6;margin-top:8px"><strong>Brechas identificadas a nivel departamental:</strong> Provisión de medicamentos, articulación intersectorial, abordaje de determinantes sociales y centralización de procesos.</div>
   </div>
 
   <div class="card">
@@ -1483,7 +1451,7 @@ function initCharts(name){
   
   if(name==='resumen'){
     mc('c-muestra','bar',D,[{data:[95,101,220], backgroundColor:'#378ADD'}, {data:[0,101,21], backgroundColor:'#534AB7'}, {data:[53,78,141], backgroundColor:'#BA7517'}], {...so, plugins:{legend:{display:false}}});
-    mc('c-incidencia','bar',D,[{label:'Malaria', data:[0.00,6.04,56.77], backgroundColor:'#D85A30'}, {label:'Dengue', data:[0.60,0.93,2.02], backgroundColor:'#378ADD'}], {plugins:{legend:{display:false}}});
+    mc('c-incidencia','bar',D,[{label:'Malaria', data:[0.00,6.29,3.66], backgroundColor:'#D85A30'}, {label:'Dengue', data:[0.60,0.18,0.59], backgroundColor:'#378ADD'}], {plugins:{legend:{display:false}}});
   }
   if(name==='contexto'){
     const D_BO = ['Trinidad','Riberalta','Guayaramerín'];
@@ -1507,8 +1475,8 @@ function initCharts(name){
     initPatrimonio();
   }
   if(name==='salud'){
-    mc('c-inc-malaria','bar',D,[{label:'2024', data:[0.00,6.04,56.77], backgroundColor:'#888780'}, {label:'2025', data:[0.00,4.53,47.14], backgroundColor:'#378ADD'}, {label:'2026', data:[0.00,2.02,20.50], backgroundColor:'#D85A30'}], {plugins:{legend:{display:false}}});
-    mc('c-inc-dengue','bar',D,[{label:'2024', data:[0.60,0.93,2.02], backgroundColor:'#888780'}, {label:'2025', data:[0.44,1.08,2.58], backgroundColor:'#1D9E75'}, {label:'2026', data:[0.28,0.45,0.42], backgroundColor:'#3DDC97'}], {plugins:{legend:{display:false}}});
+    mc('c-inc-malaria','bar',D,[{label:'2024', data:[0.00,6.29,3.66], backgroundColor:'#888780'}, {label:'2025', data:[0.00,3.49,5.74], backgroundColor:'#378ADD'}, {label:'2026', data:[0.00,1.92,1.28], backgroundColor:'#D85A30'}], {plugins:{legend:{display:false}}});
+    mc('c-inc-dengue','bar',D,[{label:'2024', data:[0.60,0.18,0.59], backgroundColor:'#888780'}, {label:'2025', data:[0.44,0.14,0.65], backgroundColor:'#1D9E75'}, {label:'2026', data:[0.28,0.16,0.48], backgroundColor:'#3DDC97'}], {plugins:{legend:{display:false}}});
     mc('c-diag','bar',['Malaria','Dengue','Ninguno'],[{label:'Trinidad', data:[2.4,2.4,95.2], backgroundColor:'#378ADD'},{label:'Trinidad', data:[2.4,29.3,65.9], backgroundColor:'#534AB7'},{label:'Riberalta', data:[0,0,100], backgroundColor:'#1D9E75'},{label:'Guaya.', data:[20,20,60], backgroundColor:'#D85A30'}], {});
     mc('c-conducta','bar',D,[{label:'Va inmediato al establecimiento', data:Z(CH['c-conducta'][0]), backgroundColor:'#1D9E75'}, {label:'Va a farmacia', data:Z(CH['c-conducta'][1]), backgroundColor:'#BA7517'}, {label:'Trata en casa', data:Z(CH['c-conducta'][2]), backgroundColor:'#D85A30'}], {...so, scales:{...so.scales,y:{...so.scales.y,max:110}}});
     mc('c-fumig','bar',D,[{label:'<3 meses', data:Z(CH['c-fumig'][0]), backgroundColor:'#1D9E75'}, {label:'3-5 meses', data:Z(CH['c-fumig'][1]), backgroundColor:'#378ADD'}, {label:'6-11 meses', data:Z(CH['c-fumig'][2]), backgroundColor:'#BA7517'}, {label:'≥1 año/nunca', data:Z(CH['c-fumig'][3]), backgroundColor:'#D85A30'}], {...so, scales:{...so.scales,y:{...so.scales.y,max:110}}});
